@@ -115,6 +115,11 @@ jobs:
           zip -r artifact.zip ./artifact/
           release_tag="R2S-Lean-$(date +%Y-%m-%d)"
           echo "##[set-output name=release_tag;]$release_tag"
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_firmware
+          path: ./artifact.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
